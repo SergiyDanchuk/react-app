@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import './CostForm.css'
 
-const CostForm = () => {
-  const [name, setName] = useState('')
-  const [amount, setAmount] = useState('')
-  const [date, setDate] = useState('')
+const CostForm = (props) => {
+  const [name, setName] = useState('');
+  const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('');
+  const { onSaveCostData } = props;
 
   // cosnt [userInput, setUserInput] = useState({
   //   name: '',
@@ -13,7 +14,7 @@ const CostForm = () => {
   // })
 
   const nameChangeHandler = (event) => {
-    setName(event.target.value)
+    setName(event.target.value);
 
     // setUserInput({
     //   ...userInput,
@@ -28,7 +29,7 @@ const CostForm = () => {
     // }) 
   }
   const amountChangeHandler = (event) => {
-    setAmount(event.target.value)
+    setAmount(event.target.value);
 
     // setUserInput({
     //   ...userInput,
@@ -43,7 +44,7 @@ const CostForm = () => {
     // })
   }
   const dateChangeHandler = (event) => {
-    setDate(event.target.value)
+    setDate(event.target.value);
 
     // setUserInput({
     //   ...userInput,
@@ -67,10 +68,10 @@ const CostForm = () => {
       date: new Date(date)
     }
 
-    console.log(costData)
-    setName('')
-    setAmount('')
-    setDate('')
+    onSaveCostData(costData);
+    setName('');
+    setAmount('');
+    setDate('');
   }
 
   return (
